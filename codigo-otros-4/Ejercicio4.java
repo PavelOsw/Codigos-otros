@@ -4,41 +4,42 @@ package com.generation;
 import java.util.Scanner;
 
 public class Codigo4 {
+  // Función Main no existía
+  public static void main(String[] args) {
 
     Scanner s = new Scanner(System.in); // Faltaba el argumento System.in para capturar ingreso de datos
     
-    System.out.println("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
+    System.out.print("Turno del jugador 1 (introduzca piedra, papel o tijeras): ");
     String j1 = s.nextLine();
     
     // Modificacion en el mensaje de salida para jugador 2
-    System.out.println("Turno del jugador 2 (introduzca piedra, papel o tijeras): ");
-    // Nombre de variable s cambiada a s2
-    Scanner s2 = new Scanner(System.in);
-    String j2 = s2.nextLine();
+    System.out.print("Turno del jugador 2 (introduzca piedra, papel o tijeras): ");
+    // Instanciamiento de s2 no necesario 
+    String j2 = s.nextLine();
+    // Cierre de scanner
+    s.close();
     
-    // Parentesis extra e igualación 
-    if (j1 === j2) { 
+    // Cambio de expreesión por equals para comparaciones 
+    if (j1.equals(j2)) { 
       System.out.println("Empate");
     } else {
       int g = 2;
       switch(j1) {
         case "piedra":
-          if (j2 == "tijeras") {
+        // Cambiamos signo por igualdad y no comparación
+          if (j2.equals("tijeras")) 
             g = 1;
-          }
-
         case "papel":
-          if (j2 == "piedra") {
+        // Cambiamos signo por igualdad y no comparación
+          if (j2.equals("piedra"))
             g = 1;
-          
         case "tijera":
-          if (j2.equals("papel")) {
+          if (j2.equals("papel"))
             g = 1;
-          }
           break;
         default:
           } // Correción de identación
         System.out.println("Gana el jugador " + g);
       } // Correción de identación
-  } // Faltaba llave de cierre para clase Codigo4
+  } // Faltaba llave de cierre para función Main
 }
