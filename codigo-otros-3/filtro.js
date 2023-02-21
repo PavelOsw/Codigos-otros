@@ -8,8 +8,9 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ];
 
-const li = document.querySelector(".lista-de-productos");
-const $i = document.querySelector(".input");
+// Variables cambiadas a const
+const $li = document.querySelector("#lista-de-productos");
+const $i = document.querySelector("#input");
 
 for (let i = 0; i < productos.length; i++) {
   const d = document.createElement("div");
@@ -27,6 +28,8 @@ for (let i = 0; i < productos.length; i++) {
 
   li.appendChild(d);
 }
+
+displayProductos(productos, $lista);
 
 const botonDeFiltro = document.querySelector("button");
 
@@ -57,6 +60,21 @@ botonDeFiltro.addEventListener("click", function() {
   }
 });
 
+displayProductos(productos, $lista);
+
+const botonDeFiltro = document.querySelector("button");
+
+botonDeFiltro.onclick = function() {
+  while ($lista.firstChild) {
+    $lista.removeChild($lista.firstChild);
+  }
+
+  const texto = $input.value;
+  const productosFiltrados = filtrado(productos, texto);
+
+displayProductos(productosFiltrados, $lista);
+};
+
 const filtrado = (productos = [], texto) => {
   return productos.filter(item => item.tipo.includes(texto) || item.color.includes(texto));
-};
+}; 
